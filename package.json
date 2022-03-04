@@ -3,12 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prisma:dev:deploy": "prisma migrate deploy",
+    "db:dev:rm": "docker-compose rm  -s -f -v",
+    "db:dev:up": "docker-compose up -d",
+    "db:dev:restart": "npm run db:dev:rm && sleep 1 && npm run db:dev:up && npm run prisma:dev:deploy",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@prisma/client": "^3.10.0",
     "@tailwindcss/forms": "^0.5.0",
     "@tailwindcss/typography": "^0.5.2",
     "next": "12.1.0",
